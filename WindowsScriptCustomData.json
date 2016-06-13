@@ -184,8 +184,8 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('vmName'),'/installcustomscript')]",
-      "apiVersion": "[variables('apiVersion')]",
+      "name": "[concat(variables('vmName'),'/CustomScriptExtension')]",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -196,8 +196,8 @@
         "typeHandlerVersion": "1.7",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "fileUris": ["https://github.com/JargoonPard/ConfigScripts/blob/master/WindowsCreateFolders.ps1"],
-          "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File WindowsCreateFolders.ps1"
+          "fileUris": ["https://raw.githubusercontent.com/JargoonPard/ConfigScripts/master/WindowsCreateFolders.ps1"],
+          "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File WindowsCreateFolders.ps1"
         }
       }
     }
